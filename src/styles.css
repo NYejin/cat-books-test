@@ -4,7 +4,7 @@
 
 /*
   Design tokens as "R G B" so Tailwind can apply opacity (bg-ink-900/40).
-  Agent console: indigo + coral, left icon rail, lavender side panel — light and dark.
+  Agent console: blue (#2563eb family) primary in light mode, indigo primary in dark mode, coral accent, left icon rail, lavender side panel.
   Storefront (.theme-shop below) swaps the same variables for a paper-and-green palette, so one set of
   Tailwind classes serves both. Chart colors (--chart-1, --chart-2) are validated per mode with the
   dataviz palette validator; text never uses them.
