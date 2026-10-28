@@ -1,3 +1,10 @@
+> **출처:** ax-company-hq/ax-frontend의 `shop-web` 폴더(dev `c1eb44a`, 10/27)를 커밋 기록째 떼어 온 레포예요.
+> 고객사(캣북스) 쇼핑몰 시연 화면이고, AXcellent(Axcellent-bs)와 따로 돌아요.
+>
+> - 실행: `npm install` → `npm run dev` (http://localhost:3000)
+> - 백엔드: Axcellent-bs에서 `bash backend/scripts/run_all.sh`로 띄운 shop-api(8010)를 불러요.
+> - 원본과 다른 점: 쓰지 않던 `@ax/types`·`@dejafix/common-frontend` 의존성을 뺐고, `.env`는 이 레포 루트 것을 읽어요. 관리자 링크 기본값은 AXcellent(3090)예요.
+
 # shop-web
 
 담당: 재헌 · 포트: 3000 · 연결 API: shop-api (8010)

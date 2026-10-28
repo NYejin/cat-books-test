@@ -1,5 +1,5 @@
 {
-  "name": "@ax/shop-web",
+  "name": "shop-web",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ax/types": "*",
-    "@dejafix/common-frontend": "git+https://github.com/DejaFix/common-frontend.git#v0.1.0",
     "pretendard": "^1.3.9",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
@@ -27,5 +25,8 @@
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.2",
     "vite": "^8.3.4"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
