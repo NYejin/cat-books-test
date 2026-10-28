@@ -3,7 +3,7 @@
 >
 > - 실행: `npm install` → `npm run dev` (http://localhost:3000)
 > - 백엔드: Axcellent-bs에서 `bash backend/scripts/run_all.sh`로 띄운 shop-api(8010)를 불러요.
-> - 원본과 다른 점: 쓰지 않던 `@ax/types`·`@dejafix/common-frontend` 의존성을 뺐고, `.env`는 이 레포 루트 것을 읽어요. 관리자 링크 기본값은 AXcellent(3090)예요.
+> - 원본과 다른 점: 쓰지 않던 `@ax/types`·`@dejafix/common-frontend` 의존성을 뺐고, `.env`는 이 레포 루트 것을 읽어요. 고객 화면이라 사내 도구(상담원 콘솔·관리자)로 가는 링크는 없앴어요.
 
 # shop-web
 
