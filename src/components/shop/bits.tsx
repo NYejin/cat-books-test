@@ -1,5 +1,5 @@
 import { Link } from "@/lib/nav";
-import { useEffect, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { hueOf, won } from "@/lib/format";
 import { useCategories } from "@/lib/categories";
 import { api } from "@/lib/api";
@@ -46,6 +46,44 @@ export function Modal({ title, onClose, children, wide = false }: { title: strin
         {children}
       </div>
     </div>
+  );
+}
+
+/** 택배사 휴무 배송지연 안내 팝업의 기본 문구. */
+export const DELIVERY_DELAY_MESSAGE = "택배사 휴무로 배송이 지연될 수 있어요";
+/** 닫음 기록을 남기는 localStorage 키. */
+const DELIVERY_DELAY_DISMISS_KEY = "shop:delivery-delay-notice:dismissed";
+/** 이 시각(한국 시간 2026-11-04 23:59)까지만 노출한다. */
+const DELIVERY_DELAY_UNTIL = new Date("2026-11-04T23:59:59+09:00").getTime();
+
+/** 배송지연 안내 팝업. 노출 기한 안이고 아직 닫은 적이 없을 때만 한 번 뜬다. 닫으면 localStorage에 기록한다. */
+export function DeliveryDelayNotice({ message = DELIVERY_DELAY_MESSAGE }: { message?: string }) {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (Date.now() > DELIVERY_DELAY_UNTIL) return;
+    try {
+      if (window.localStorage.getItem(DELIVERY_DELAY_DISMISS_KEY)) return;
+    } catch {
+      // localStorage를 못 읽어도 팝업은 보여 준다.
+    }
+    setOpen(true);
+  }, []);
+  const close = useCallback(() => {
+    setOpen(false);
+    try {
+      window.localStorage.setItem(DELIVERY_DELAY_DISMISS_KEY, "1");
+    } catch {
+      // 저장에 실패해도 이번 화면에서는 닫는다.
+    }
+  }, []);
+  if (!open) return null;
+  return (
+    <Modal title="배송 지연 안내" onClose={close}>
+      <p className="break-keep text-sm leading-relaxed text-ink-700">{message}</p>
+      <div className="mt-4 flex justify-end">
+        <button className="btn-quiet px-3 py-1.5 font-semibold" onClick={close}>확인</button>
+      </div>
+    </Modal>
   );
 }
 

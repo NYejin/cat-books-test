@@ -1,11 +1,50 @@
 import { Link } from "@/lib/nav";
 import { usePathname, useRouter } from "@/lib/nav";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { useAuth } from "@/lib/auth";
 import { useCart } from "@/lib/cart";
 import { useCategories } from "@/lib/categories";
 import { IconCart, IconSearch, IconUser } from "../icons";
 import { ThemeToggle } from "../ThemeToggle";
+
+const DELAY_NOTICE_KEY = "shop:delivery-delay-notice:dismissed";
+const DELAY_NOTICE_END = new Date("2026-11-04T23:59:00+09:00").getTime();
+const DELAY_NOTICE_MESSAGE = "택배사 휴무로 배송이 지연될 수 있어요";
+
+function DeliveryDelayNotice({ message = DELAY_NOTICE_MESSAGE }: { message?: string }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (Date.now() >= DELAY_NOTICE_END) return;
+    try {
+      if (localStorage.getItem(DELAY_NOTICE_KEY)) return;
+    } catch {
+      // 저장소를 읽을 수 없어도 공지는 보여준다
+    }
+    setOpen(true);
+  }, []);
+
+  function close() {
+    try {
+      localStorage.setItem(DELAY_NOTICE_KEY, "1");
+    } catch {
+      // 저장 실패 시 이번 화면에서만 닫는다
+    }
+    setOpen(false);
+  }
+
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+      <div role="dialog" aria-modal="true" aria-labelledby="delivery-delay-title" className="w-full max-w-sm rounded-2xl bg-surface p-6 text-ink-900 shadow-xl">
+        <h2 id="delivery-delay-title" className="text-base font-bold text-brand-600">배송 지연 안내</h2>
+        <p className="mt-3 text-sm leading-relaxed text-ink-700">{message}</p>
+        <button type="button" onClick={close} className="mt-5 w-full rounded-full bg-brand-600 py-2.5 text-sm font-semibold text-white">닫기</button>
+      </div>
+    </div>
+  );
+}
 
 function Logo() {
   return (
@@ -114,6 +153,8 @@ export function ShopShell({ children }: { children: ReactNode }) {
           <Link href="/privacy" className="font-semibold text-ink-700 hover:underline">개인정보처리방침</Link>
         </nav>
       </footer>
+
+      <DeliveryDelayNotice />
     </div>
   );
 }
