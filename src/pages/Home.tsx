@@ -1,6 +1,7 @@
 import { Link } from "@/lib/nav";
 import { useEffect, useState } from "react";
 import { ErrorNote, ProductCard } from "@/components/shop/bits";
+import DeliveryDelayPopup from "@/components/shop/DeliveryDelayPopup";
 import { api } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import type { Product } from "@/lib/types";
@@ -34,6 +35,7 @@ export default function Home() {
 
   return (
     <div>
+      <DeliveryDelayPopup />
       <ErrorNote error={error} />
       <section className="grid gap-4 lg:grid-cols-[1fr_320px]">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-hero-from to-hero-to p-8 text-white sm:p-10">
