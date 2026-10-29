@@ -4,7 +4,7 @@
 
 /*
   Design tokens as "R G B" so Tailwind can apply opacity (bg-ink-900/40).
-  Agent console: indigo + coral, left icon rail, lavender side panel — light and dark.
+  Agent console: purple + coral, left icon rail, lavender side panel — light and dark.
   Storefront (.theme-shop below) swaps the same variables for a paper-and-green palette, so one set of
   Tailwind classes serves both. Chart colors (--chart-1, --chart-2) are validated per mode with the
   dataviz palette validator; text never uses them.
@@ -14,22 +14,22 @@
   --canvas: 222 226 233;
   --app: 255 255 255;
   --surface: 255 255 255;
-  --surface-2: 247 246 253;
+  --surface-2: 250 246 253;
   --ink-50: 248 248 251;
   --ink-100: 239 239 245;
   --ink-300: 210 210 222;
   --ink-500: 120 120 140;
   --ink-700: 62 62 82;
   --ink-900: 34 34 52;
-  --brand-50: 240 238 252;
-  --brand-100: 226 223 250;
-  --brand-500: 91 79 208;
-  --brand-600: 59 49 166;
-  --brand-700: 59 49 166;
-  --brand-strong: 46 38 136;
+  --brand-50: 245 238 253;
+  --brand-100: 233 220 250;
+  --brand-500: 147 51 234;
+  --brand-600: 126 34 206;
+  --brand-700: 107 33 168;
+  --brand-strong: 88 28 135;
   --hero-from: 247 160 132;
   --hero-to: 236 116 82;
-  --chart-1: 75 63 176;
+  --chart-1: 126 34 206;
   --chart-2: 236 116 82;
   --red-50: 254 242 242;
   --red-100: 254 226 226;
@@ -61,15 +61,15 @@
   --ink-500: 156 152 178;
   --ink-700: 210 207 225;
   --ink-900: 239 238 246;
-  --brand-50: 35 31 69;
-  --brand-100: 46 40 96;
-  --brand-500: 134 125 232;
-  --brand-600: 97 86 216;
-  --brand-700: 185 178 247;
-  --brand-strong: 78 68 190;
+  --brand-50: 44 26 66;
+  --brand-100: 61 35 92;
+  --brand-500: 192 132 252;
+  --brand-600: 147 51 234;
+  --brand-700: 216 180 254;
+  --brand-strong: 126 34 206;
   --hero-from: 196 104 74;
   --hero-to: 168 78 52;
-  --chart-1: 134 125 232;
+  --chart-1: 192 132 252;
   --chart-2: 212 112 79;
   --red-50: 58 22 24;
   --red-100: 82 28 30;
