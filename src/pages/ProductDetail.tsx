@@ -56,7 +56,7 @@ export default function ProductPage() {
               {added ? "담았어요 ✓" : "장바구니"}
             </button>
             <button className="btn-primary px-8 py-2.5" disabled={soldOut} onClick={() => { cart.add(p, qty); router.push("/cart"); }}>
-              {soldOut ? "일시품절" : "바로구매"}
+              바로구매
             </button>
           </div>
           {!soldOut && p.stock <= 5 && <p className="mt-2 text-xs font-medium text-accent">남은 수량 {p.stock}개</p>}
