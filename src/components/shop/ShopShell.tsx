@@ -24,7 +24,7 @@ function DeliveryDelayNotice({ message = DELAY_NOTICE_MESSAGE }: { message?: str
     setOpen(true);
   }, []);
 
-  function close() {
+  function hide() {
     try {
       localStorage.setItem(DELAY_NOTICE_KEY, "1");
     } catch {
@@ -40,7 +40,10 @@ function DeliveryDelayNotice({ message = DELAY_NOTICE_MESSAGE }: { message?: str
       <div role="dialog" aria-modal="true" aria-labelledby="delivery-delay-title" className="w-full max-w-sm rounded-2xl bg-surface p-6 text-ink-900 shadow-xl">
         <h2 id="delivery-delay-title" className="text-base font-bold text-brand-600">배송 지연 안내</h2>
         <p className="mt-3 text-sm leading-relaxed text-ink-700">{message}</p>
-        <button type="button" onClick={close} className="mt-5 w-full rounded-full bg-brand-600 py-2.5 text-sm font-semibold text-white">닫기</button>
+        <div className="mt-5 flex gap-2">
+          <button type="button" onClick={hide} className="flex-1 rounded-full border border-ink-300 py-2.5 text-sm font-semibold text-ink-700">다시 보지 않기</button>
+          <button type="button" onClick={() => setOpen(false)} className="flex-1 rounded-full bg-brand-600 py-2.5 text-sm font-semibold text-white">닫기</button>
+        </div>
       </div>
     </div>
   );
