@@ -6,10 +6,6 @@ import { useAuth } from "@/lib/auth";
 import type { Product } from "@/lib/types";
 import { IconBox, IconReceipt, IconRefresh } from "@/components/icons";
 
-// 홈화면 노출 플래그. true로 바꾸면 다시 보인다.
-const SHOW_HOME_BANNER = false;
-const SHOW_BUYER_PICKER = false;
-
 function Shelf({ title, href, items }: { title: string; href: string; items: Product[] }) {
   return (
     <section className="mt-12">
@@ -40,7 +36,6 @@ export default function Home() {
     <div>
       <ErrorNote error={error} />
       <section className="grid gap-4 lg:grid-cols-[1fr_320px]">
-        {SHOW_HOME_BANNER && (
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-hero-from to-hero-to p-8 text-white sm:p-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-white/80">Night Library Fair</p>
           <h1 className="mt-3 break-keep text-3xl font-extrabold leading-tight sm:text-4xl">밤의 도서관,<br />고양이가 책을 골라 드려요</h1>
@@ -53,8 +48,6 @@ export default function Home() {
             <path d="M20 118V30l40 30h80l40-30v88Z" fill="white" />
           </svg>
         </div>
-        )}
-        {SHOW_BUYER_PICKER && (
         <aside className="rounded-2xl border border-ink-100 bg-surface p-5">
           <h2 className="text-sm font-bold">{user ? `${user.id} 구매자로 보는 중` : "처음 오셨나요?"}</h2>
           <p className="mt-1 text-xs text-ink-500">
@@ -67,7 +60,6 @@ export default function Home() {
           </ul>
           <Link href={user ? "/orders" : "/login"} className="btn-primary mt-4 w-full">{user ? "내 주문 보기" : "구매자 선택"}</Link>
         </aside>
-        )}
       </section>
 
       <Shelf title="전체 상품" href="/products" items={all.slice(0, 5)} />
