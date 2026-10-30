@@ -13,7 +13,7 @@ export default function CartPage() {
   return (
     <div>
       <PageTitle title="장바구니" sub={`${cart.count}개`} />
-      <p className="mb-4 text-xs text-ink-500">4만 원 이상 주문 시 무료 배송</p>
+      <p className="mb-4 text-xs text-ink-500">5만 원 이상 무료 배송</p>
       <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
         <ul className="divide-y divide-ink-100 rounded-xl border border-ink-100 bg-surface">
           {cart.lines.map((l) => (
