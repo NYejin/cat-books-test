@@ -8,7 +8,7 @@ export default function CartPage() {
   const cart = useCart();
   const { price, error } = useCartPrice(cart.lines);
 
-  if (!cart.lines.length) return <><PageTitle title="장바구니" /><Empty>담아 둔 상품이 없습니다. <Link href="/products" className="font-semibold text-brand-600 underline">상품 보러 가기</Link></Empty></>;
+  if (!cart.lines.length) return <><PageTitle title="장바구니" /><Empty>장바구니가 비어 있어요. <Link href="/products" className="font-semibold text-brand-600 underline">상품 보러 가기</Link></Empty></>;
 
   return (
     <div>
