@@ -135,6 +135,11 @@ function Detail() {
             {payable && <button className="btn-primary" disabled={busy} onClick={pay}>{busy ? "처리 중…" : o.status === "payment_failed" ? "다른 수단으로 다시 결제하기" : "결제하기"}</button>}
             {payable && <button className="btn-ghost" disabled={busy} onClick={() => act(() => api.cancel(o.order_id))}>주문 취소</button>}
             {axClaimTypes(o).length > 0 && <button className="btn-ghost" onClick={() => setClaimOpen(true)}>{o.delivered_at ? "반품·교환 신청" : "취소 신청"}</button>}
+            {o.status === "succeeded" && (
+              <a href={`/api/orders/${o.order_id}/receipt`} target="_blank" rel="noreferrer" className="btn-ghost">
+                영수증 다운로드
+              </a>
+            )}
           </div>
 
           {claims.map((c) => (
