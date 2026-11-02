@@ -26,8 +26,13 @@ export default function CheckoutPage() {
     try {
       const order = await api.placeOrder({ buyer_id: user.id, items: cart.lines.map((l) => ({ product_id: l.id, qty: l.qty })) });
       cart.clear();
-      // 결제가 실패해도 주문은 만들어졌다: 주문 상세에서 상태를 보고 다시 결제한다.
-      await api.pay(order.order_id, method).catch(() => undefined);
+      // 결제 실패 시 자동 재결제 시도 연동
+      try {
+        await api.pay(order.order_id, method);
+      } catch {
+        const { retryPayment } = await import("@/lib/payment");
+        await retryPayment({ orderId: order.order_id, method });
+      }
       router.push(`/orders/${order.order_id}?placed=1`);
     } catch (e) {
       setError((e as Error).message);

@@ -22,5 +22,19 @@ export function lastFailedPayment(o: Pick<Order, "payments">): Payment | null {
   return failed.reduce((a, b) => (b.created_at >= a.created_at ? b : a));
 }
 
+/** 결제 실패 시 자동으로 재결제를 시도하는 함수 */
+export async function retryPayment(orderId: string, method?: string): Promise<Payment> {
+  // 자동 재결제 시도 로직 구현
+  const response = await fetch(`/api/orders/${orderId}/retry`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ method }),
+  });
+  if (!response.ok) {
+    throw new Error("자동 재결제 시도 실패");
+  }
+  return response.json();
+}
+
 /** 결제 실패 화면에서 문의 화면으로 가는 경로. 주문 번호만 넘긴다(개인정보 아님). */
 export const supportHref = (orderId: string) => `/support?order_id=${encodeURIComponent(orderId)}`;
