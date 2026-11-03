@@ -40,7 +40,7 @@ export default function ProductPage() {
         <div>
           <p className="text-xs font-semibold text-brand-600">{categoryLabel(p.category_code)}</p>
           <h1 className="mt-1 break-keep text-2xl font-bold leading-snug">{p.name}</h1>
-          <p className="mt-1 text-sm text-ink-500">판매자 {p.seller_id} · 상품번호 {p.product_id}</p>
+          <p className="mt-1 text-sm text-ink-500">판매자 {p.seller_id} · 상품번호 {p.product_id}{p.pages ? ` · 총 쪽수 ${p.pages}쪽` : ""}</p>
           <div className="mt-4 border-y border-ink-100 py-4">
             <Price amount={p.price} big />
             <p className="mt-1 text-xs text-ink-500">배송비·최종 결제 금액은 주문 시 판매 서버가 계산합니다.</p>
