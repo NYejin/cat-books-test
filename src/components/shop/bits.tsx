@@ -12,13 +12,11 @@ export function Price({ amount, big = false }: { amount: number; big?: boolean }
 }
 
 export function ProductCard({ p }: { p: Product }) {
-  const soldOut = p.stock <= 0;
   const { label } = useCategories();
   return (
     <Link href={`/products/${p.product_id}`} className="group flex w-full flex-col gap-2">
       <div className="relative rounded-md bg-surface-2 p-4 transition group-hover:bg-ink-100">
         <Cover title={p.name} hue={hueOf(p.product_id)} category={p.category_code} productId={p.product_id} className="mx-auto max-w-[170px]" />
-        {soldOut && <span className="absolute left-2 top-2 chip bg-ink-900 text-surface">일시품절</span>}
       </div>
       <div className="min-w-0">
         <h3 className="line-clamp-2 break-keep text-sm font-semibold leading-snug group-hover:underline">{p.name}</h3>
