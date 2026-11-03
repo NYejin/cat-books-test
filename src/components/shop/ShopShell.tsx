@@ -136,6 +136,7 @@ export function ShopShell({ children }: { children: ReactNode }) {
           <div>
             <p className="font-semibold text-ink-700">캣북스 고객센터</p>
             <p className="mt-1 leading-relaxed">영수증 기준으로 환불·교환·보상을 계산하고, 반품 상품이 도착한 순서대로 처리합니다.</p>
+            <p className="mt-2 text-ink-600">고객센터 운영시간: 평일 10:00 ~ 17:00 (점심시간 12:00 ~ 13:00, 주말·공휴일 휴무)</p>
           </div>
           <div>
             <p className="font-semibold text-ink-700">반품·환불 안내</p>
