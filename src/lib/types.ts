@@ -3,7 +3,7 @@
 // TODO: shop-api가 OpenAPI 타입을 열면 `npm run gen:types`의 `@ax/types/shop-api`로 바꾼다.
 
 export interface Product {
-  product_id: string; seller_id: string; name: string; category_code: string; price: number; stock: number; active: boolean;
+  product_id: string; seller_id: string; name: string; category_code: string; price: number; stock: number; active: boolean; pages?: number;
 }
 
 export interface OrderItem {
