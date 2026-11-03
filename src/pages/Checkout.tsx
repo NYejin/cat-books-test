@@ -31,7 +31,7 @@ export default function CheckoutPage() {
         await api.pay(order.order_id, method);
       } catch {
         const { retryPayment } = await import("@/lib/payment");
-        await retryPayment({ orderId: order.order_id, method });
+        await retryPayment(order.order_id, method);
       }
       router.push(`/orders/${order.order_id}?placed=1`);
     } catch (e) {
